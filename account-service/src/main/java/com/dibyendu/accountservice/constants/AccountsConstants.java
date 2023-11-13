@@ -1,0 +1,14 @@
+package com.dibyendu.accountservice.constants;
+
+public interface AccountsConstants {
+
+     String SAVINGS="Savings";
+     String ADDRESS="Park Street , Kolkata";
+     String STATUS_201="201";
+     String MESSAGE_201="Account Created Successfully";
+     String STATUS_200="200";
+     String MESSAGE_200="Request Processed Successfully";
+     String STATUS_500="500";
+     String MESSAGE_500="An Error Occurred , Please Try Again";
+
+}
