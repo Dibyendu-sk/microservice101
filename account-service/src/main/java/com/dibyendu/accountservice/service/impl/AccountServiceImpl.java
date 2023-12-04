@@ -94,6 +94,10 @@ public class AccountServiceImpl implements AccountService {
         boolean isUpdated=false;
         AccountsDto accountsDto=customerDto.getAccountDetails();
 
+        if(customerRepository.existsByMobileNumber(customerDto.getMobileNumber())){
+            throw  new CustomerAlreadyExistsException("Customer already exists with the given mobile number "+customerDto.getMobileNumber());
+        }
+
 
         if(accountsDto!=null){
             log.info("extracted account details from customer dto - "+accountsDto);
@@ -141,7 +145,9 @@ public class AccountServiceImpl implements AccountService {
 
         log.info("Customer details to be deleted - "+customer);
         accountsRepository.deleteByCustomerId(customer.getCustomerId());
+        log.info("--- Account deleted ---");
         customerRepository.deleteById(customer.getCustomerId());
+        log.info("--- Customer deleted ---");
         isDeleted=true;
 
         return  isDeleted;

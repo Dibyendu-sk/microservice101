@@ -5,21 +5,25 @@ import com.dibyendu.accountservice.Dto.response.ResponseDto;
 import com.dibyendu.accountservice.constants.AccountsConstants;
 import com.dibyendu.accountservice.exception.ResourceNotFoundException;
 import com.dibyendu.accountservice.service.AccountService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/microservice101/account-service", produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
+@Validated
 public class AccountsController {
 
     private AccountService accountService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createAccount(@RequestBody CustomerDto customersDto) {
+    public ResponseEntity<ResponseDto> createAccount(@Valid  @RequestBody CustomerDto customersDto) {
 
         accountService.createAccount(customersDto);
 
@@ -29,14 +33,15 @@ public class AccountsController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<CustomerDto> fetchAccountDetails(@RequestParam String mobileNumber) throws ResourceNotFoundException {
+    public ResponseEntity<CustomerDto> fetchAccountDetails(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",message = "Please enter a valid mobile number")
+                                                               String mobileNumber) throws ResourceNotFoundException {
         CustomerDto customerDto = accountService.fetchAccount(mobileNumber);
 
         return ResponseEntity.status(HttpStatus.OK).body(customerDto);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateAccountDetails(@RequestBody CustomerDto customerDto) throws ResourceNotFoundException {
+    public ResponseEntity<ResponseDto> updateAccountDetails(@Valid  @RequestBody CustomerDto customerDto) throws ResourceNotFoundException {
         boolean isUpdated = accountService.updateAccount(customerDto);
 
         if (isUpdated) {
@@ -47,7 +52,8 @@ public class AccountsController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam String mobileNumber) throws ResourceNotFoundException {
+    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",message = "mobile number must be 10 digits")
+                                                         String mobileNumber) throws ResourceNotFoundException {
         boolean isDeleted=accountService.deleteAccount(mobileNumber);
 
         if (isDeleted){
