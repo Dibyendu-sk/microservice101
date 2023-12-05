@@ -38,8 +38,6 @@ public class AccountServiceImpl implements AccountService {
         if (optionalCustomer.isPresent()){
             throw  new CustomerAlreadyExistsException("Customer already exists with the given mobile number "+customerDto.getMobileNumber());
         }
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("HDFC Pvt. Ltd");
         Customer savedCustomer = customerRepository.save(customer);
         accountsRepository.save(createNewAccount(savedCustomer));
     }
@@ -51,9 +49,6 @@ public class AccountServiceImpl implements AccountService {
         newAccount.setAccountNumber(accountNumber);
         newAccount.setAccountType(AccountsConstants.SAVINGS);
         newAccount.setBranchAddress(AccountsConstants.ADDRESS);
-
-        newAccount.setCreatedAt(LocalDateTime.now());
-        newAccount.setCreatedBy("HDFC Pvt. Ltd");
 
         return newAccount;
     }
@@ -94,9 +89,9 @@ public class AccountServiceImpl implements AccountService {
         boolean isUpdated=false;
         AccountsDto accountsDto=customerDto.getAccountDetails();
 
-        if(customerRepository.existsByMobileNumber(customerDto.getMobileNumber())){
-            throw  new CustomerAlreadyExistsException("Customer already exists with the given mobile number "+customerDto.getMobileNumber());
-        }
+//        if(customerRepository.existsByMobileNumber(customerDto.getMobileNumber())){
+//            throw  new CustomerAlreadyExistsException("Customer already exists with the given mobile number "+customerDto.getMobileNumber());
+//        }
 
 
         if(accountsDto!=null){
