@@ -3,14 +3,14 @@ package com.dibyendu.loanservice.service;
 import com.dibyendu.loanservice.Dto.LoansDto;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface LoanService {
 
     /**
     * @param mobileNumber - Input Mobile Number
      * @return - void
     */
-    void createAccout(String mobileNumber);
+    void createLoan(String mobileNumber);
 
     LoansDto fetchLoanDetails(String mobileNumber);
 

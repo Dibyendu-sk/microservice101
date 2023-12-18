@@ -1,6 +1,9 @@
 package com.dibyendu.loanservice.constants;
 
 public interface LoanConstants {
+
+    String HOME_LOAN="Home Loan";
+    int NEW_LOAN_LIMIT=1_00_000;
     String STATUS_201 = "201";
     String MESSAGE_201 = "Account Created Successfully";
     String STATUS_200 = "200";

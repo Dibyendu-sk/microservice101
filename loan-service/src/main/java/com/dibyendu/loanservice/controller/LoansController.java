@@ -30,7 +30,7 @@ public class LoansController {
     public ResponseEntity<ResponseDto> createLoad(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",message = "Please enter a valid mobile number")
                                                       String mobileNumber){
 
-        loanService.createAccout(mobileNumber);
+        loanService.createLoan(mobileNumber);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(LoanConstants.STATUS_201,LoanConstants.MESSAGE_201));
     }

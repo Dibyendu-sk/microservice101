@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @ToString
 @Getter @Setter
-public class Loan extends BaseEntity{
+public class Loans extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
