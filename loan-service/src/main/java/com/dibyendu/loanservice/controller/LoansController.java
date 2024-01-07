@@ -27,7 +27,7 @@ public class LoansController {
     private LoanService loanService;
 
     @PostMapping("/createLoan")
-    public ResponseEntity<ResponseDto> createLoad(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",message = "Please enter a valid mobile number")
+    public ResponseEntity<ResponseDto> createLoan(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",message = "Please enter a valid mobile number")
                                                       String mobileNumber){
 
         loanService.createLoan(mobileNumber);

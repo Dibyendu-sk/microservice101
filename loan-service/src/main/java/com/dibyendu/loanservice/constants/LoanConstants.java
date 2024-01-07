@@ -5,7 +5,7 @@ public interface LoanConstants {
     String HOME_LOAN="Home Loan";
     int NEW_LOAN_LIMIT=1_00_000;
     String STATUS_201 = "201";
-    String MESSAGE_201 = "Account Created Successfully";
+    String MESSAGE_201 = "Loan Created Successfully";
     String STATUS_200 = "200";
     String MESSAGE_200 = "Request Processed Successfully";
 

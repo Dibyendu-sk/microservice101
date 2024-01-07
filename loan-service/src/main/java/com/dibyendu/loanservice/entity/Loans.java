@@ -1,9 +1,6 @@
 package com.dibyendu.loanservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @ToString
 @Getter @Setter
+@Table(name = "TAB_LOANS")
 public class Loans extends BaseEntity{
 
     @Id

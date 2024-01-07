@@ -75,7 +75,7 @@ public class LoanServiceImpl implements LoanService {
      */
     @Override
     public boolean updateLoanDetails(LoansDto loansDto) {
-        Loans loan=loansRepository.findByMobileNumber(loansDto.getLoanNumber()).orElseThrow(
+        Loans loan=loansRepository.findByLoanNumber(loansDto.getLoanNumber()).orElseThrow(
                 ()->new ResourceNotFoundException("Loan","loan number",loansDto.getLoanNumber())
         );
         log.info("Old Loan details - "+loan);
