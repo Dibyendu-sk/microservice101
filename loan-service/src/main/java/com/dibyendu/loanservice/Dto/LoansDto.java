@@ -38,11 +38,11 @@ public class LoansDto {
             example = "Home Loan"
     )
     private String loanType;
-    @Positive(message = "Total amount should be greater than zero")
-    @Schema(
-            description = "Total Loan Amount",
-            example = "100000"
-    )
+        @Positive(message = "Total amount should be greater than zero")
+        @Schema(
+                description = "Total Loan Amount",
+                example = "100000"
+        )
     private int totalLoan;
 
     @PositiveOrZero(message = "Total amount Paid should be Equal or greater than zero")

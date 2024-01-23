@@ -44,7 +44,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 exception.getMessage(),
                 LocalDateTime.now()
         );
-        log.error("---Error Response--- " + errorResponseDto);
+        log.error("---Error Response--- " + errorResponseDto); 
         return new ResponseEntity<>(errorResponseDto, HttpStatus.CONFLICT);
     }
 
