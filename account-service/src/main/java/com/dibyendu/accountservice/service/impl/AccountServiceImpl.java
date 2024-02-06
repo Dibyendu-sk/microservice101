@@ -68,7 +68,7 @@ public class AccountServiceImpl implements AccountService {
 
         log.info("customer with the given phone number - "+customer.toString());
 
-        Accounts account=accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+        Accounts account= accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
                 ()-> new ResourceNotFoundException(
                         "Account",
                         "customer id",
