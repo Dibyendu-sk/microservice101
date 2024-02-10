@@ -1,0 +1,40 @@
+# network configuration for the internal communication between the services.
+# We have to do the configuration as all the services will use theirs own network.
+networks:
+  dibnet:
+    driver: "bridge"
+
+services:
+  accounts:
+    image: "4599112/account-service:latest"
+    container_name: "accounts_service_1"
+    ports:
+      - "1111:2023"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - dibnet
+  loans:
+    image: "4599112/loans-service:latest"
+    container_name: "loans_service_1"
+    ports:
+      - "2222:2024"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - dibnet
+  cards:
+    image: "4599112/cards-service:latest"
+    container_name: "cards_service_1"
+    ports:
+      - "3333:2025"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - dibnet
