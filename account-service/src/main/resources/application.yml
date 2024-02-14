@@ -10,3 +10,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+accounts:
+  message: "Welcome"
+  contactDetails:
+    name: "Dibyendu Kar"
+    email: "d@gmail.com"
+  customerCare:
+    - (+91) 1291871609
+    - (+91) 3120190816
