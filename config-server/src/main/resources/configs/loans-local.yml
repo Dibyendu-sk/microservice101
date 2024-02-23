@@ -8,11 +8,11 @@
 #      ddl-auto: update
 #    show-sql: true
 
-loans:
-  message: "Welcome to loans service -(local)"
-  contactDetails:
-    name: "Dibyendu Kar"
-    email: "b@gmail.com"
-  customerCare:
-    - (+91) 9101021010
-    - (+91) 8288191029
+#loans:
+#  message: "Welcome to loans service -(local)"
+#  contactDetails:
+#    name: "Dibyendu Kar"
+#    email: "b@gmail.com"
+#  customerCare:
+#    - (+91) 9101021010
+#    - (+91) 8288191029
