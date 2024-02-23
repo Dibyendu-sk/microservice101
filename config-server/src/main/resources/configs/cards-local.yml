@@ -1,0 +1,18 @@
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3307/microservice101
+#    username: dKar101
+#    password: serviceAdmin
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+
+cards:
+  message: "Welcome to cards service -(local)"
+  contactDetails:
+    name: "Dibyendu Kar"
+    email: "dk@gmail.com"
+  customerCare:
+    - (+91) 9090890909
+    - (+91) 8778909087

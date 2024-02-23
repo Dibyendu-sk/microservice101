@@ -2,6 +2,7 @@ package com.dibyendu.loanservice.controller;
 
 import com.dibyendu.loanservice.Dto.LoansDto;
 import com.dibyendu.loanservice.Dto.response.ErrorResponseDto;
+import com.dibyendu.loanservice.Dto.response.LoansContactInfoDto;
 import com.dibyendu.loanservice.Dto.response.ResponseDto;
 import com.dibyendu.loanservice.constants.LoanConstants;
 import com.dibyendu.loanservice.service.LoanService;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/microservice101/loan-service", produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
 @Tag(
         name = "CRUD REST APIs",
         description = "REST APIs in loan service for CREATE,READ,UPDATE and DELETE Loan details"
@@ -30,7 +30,13 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 public class LoansController {
 
-    private LoanService loanService;
+    private final LoanService loanService;
+    private final LoansContactInfoDto loansContactInfoDto;
+
+    public LoansController(LoanService loanService, LoansContactInfoDto loansContactInfoDto) {
+        this.loanService = loanService;
+        this.loansContactInfoDto = loansContactInfoDto;
+    }
 
     @Operation(
             summary = "CREATE loan rest api",
@@ -136,4 +142,8 @@ public class LoansController {
         }
     }
 
+    @GetMapping("/getContactInfo")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo() {
+        return ResponseEntity.ok().body(loansContactInfoDto);
+    }
 }

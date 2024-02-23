@@ -2,6 +2,7 @@ package com.dibyendu.cardsservice.controller;
 
 import com.dibyendu.cardsservice.constants.CardConstants;
 import com.dibyendu.cardsservice.dto.CardDto;
+import com.dibyendu.cardsservice.dto.CardsContactInfoDto;
 import com.dibyendu.cardsservice.dto.ErrorResponseDto;
 import com.dibyendu.cardsservice.dto.ResponseDto;
 import com.dibyendu.cardsservice.service.CardsService;
@@ -23,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/microservice101/cards-service", produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
 @Tag(
         name = "CRUD REST APIs",
         description = "REST APIs in loan service for CREATE,READ,UPDATE and DELETE Card details"
@@ -32,7 +32,13 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class CardsController {
 
-    private CardsService cardsService;
+    private final CardsService cardsService;
+    private final CardsContactInfoDto cardsContactInfoDto;
+
+    public CardsController(CardsService cardsService, CardsContactInfoDto cardsContactInfoDto) {
+        this.cardsService = cardsService;
+        this.cardsContactInfoDto = cardsContactInfoDto;
+    }
 
     @Operation(
             summary = "CREATE card rest api",
@@ -136,5 +142,10 @@ public class CardsController {
         } else {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseDto(CardConstants.STATUS_417, CardConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @GetMapping("/getContactInfo")
+    public ResponseEntity<CardsContactInfoDto> getContactInfo() {
+        return ResponseEntity.ok().body(cardsContactInfoDto);
     }
 }
