@@ -2,12 +2,24 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    active: git
+  #    active: native
   cloud:
     config:
       server:
-        native:
-#          search-locations: "classpath:/configs"
-          search-locations: "file:///D://codebase/configs"
+        git:
+          uri: https://github.com/Dibyendu-sk/configs.git
+          username: Dibyendu-sk
+          password: 123@Dibyendu
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+       #native:
+            # to read configration from "configs" folder
+          #search-locations: "classpath:/configs"
+
+            #To read configuration from system file path
+         #search-locations: "file:///D://codebase/configs"
 server:
   port: 8071

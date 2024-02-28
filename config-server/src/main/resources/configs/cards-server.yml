@@ -11,11 +11,11 @@
 #      ddl-auto: update
 #    show-sql: true
 
-accounts:
-  message: "Welcome to loan service -(ubuntu server)"
-  contactDetails:
-    name: "Dibyendu Kar"
-    email: "dk@gmail.com"
-  customerCare:
-    - (+91) 9090890909
-    - (+91) 8778909087
+#cards:
+#  message: "Welcome to cards service -(ubuntu server)"
+#  contactDetails:
+#    name: "Dibyendu Kar"
+#    email: "dk@gmail.com"
+#  customerCare:
+#    - (+91) 9090890909
+#    - (+91) 8778909087

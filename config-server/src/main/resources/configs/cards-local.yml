@@ -8,11 +8,11 @@
 #      ddl-auto: update
 #    show-sql: true
 
-cards:
-  message: "Welcome to cards service -(local)"
-  contactDetails:
-    name: "Dibyendu Kar"
-    email: "dk@gmail.com"
-  customerCare:
-    - (+91) 9090890909
-    - (+91) 8778909087
+#cards:
+#  message: "Welcome to cards service -(local)"
+#  contactDetails:
+#    name: "Dibyendu Kar"
+#    email: "dk@gmail.com"
+#  customerCare:
+#    - (+91) 9090890909
+#    - (+91) 8778909087
