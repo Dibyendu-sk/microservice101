@@ -21,5 +21,8 @@ spring:
 
             #To read configuration from system file path
          #search-locations: "file:///D://codebase/configs"
+
 server:
   port: 8071
+encrypt:
+  key: "AS321GF78IKAJML5UA7DS431KLOIU66V1"
