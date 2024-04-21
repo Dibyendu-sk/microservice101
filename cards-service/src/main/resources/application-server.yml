@@ -6,6 +6,11 @@ spring:
     url: jdbc:mysql://192.168.1.8:3306/microservice101
     username: dKar101
     password: serviceAdmin@123
+  rabbitmq:
+    host: 192.168.1.8
+    port: 5672
+    username: dkar
+    password: admin@123
   jpa:
     hibernate:
       ddl-auto: update

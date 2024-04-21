@@ -17,12 +17,13 @@ services:
 #      timeout: 5s
 #      retries: 10
 #      start_period: 5s
+
   configserver:
-    image: "4599112/config-server:latest"
+    image: "4599112/microservice101:config-server"
     container_name: "config_server"
-    depends_on:
-      rabbit:
-        condition: service_healthy
+#    depends_on:
+#      rabbit:
+#        condition: service_healthy
     ports:
       - "8071:8071"
     healthcheck:
@@ -32,60 +33,36 @@ services:
       timeout: 5s
       retries: 10
       start_period: 10s # this will try to execute the health check command after 5s(start_period) if there is a falure retry 10 (retries) times with the interval of 10s(interval) and inside each check it has to wait maximum 5s(timeout) to get the response from the health check url
-    deploy:
-      resources:
-        limits:
-          memory: 700m
-    networks:
-      - dibnet
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+    environment:
+      SPRING_PROFILE_ACTIVE: "server"
+
+
   accounts:
-    image: "4599112/account-service:latest"
+    image: "4599112/microservice101:account-service"
     container_name: "accounts_service_1"
     ports:
       - "1111:2023"
-    depends_on:
-      configserver:
-        condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700m
-    networks:
-      - dibnet
-    environment:
-      SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/" #The 2nd config server is according to the service name in docker compose
-      SPRING_PROFILE_ACTIVE: "local"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
   loans:
-    image: "4599112/loans-service:latest"
+    image: "4599112/microservice101:loans-service"
     container_name: "loans_service_1"
     ports:
       - "2222:2024"
-    depends_on:
-      configserver:
-        condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700m
-    networks:
-      - dibnet
-    environment:
-      SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/" #The 2nd config server is according to the service name in docker compose
-      SPRING_PROFILE_ACTIVE: "local"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
   cards:
-    image: "4599112/cards-service:latest"
+    image: "4599112/microservice101:cards-service"
     container_name: "cards_service_1"
     ports:
       - "3333:2025"
-    depends_on:
-      configserver:
-        condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700m
-    networks:
-      - dibnet
-    environment:
-      SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/" #The 2nd config server is according to the service name in docker compose
-      SPRING_PROFILE_ACTIVE: "local"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config

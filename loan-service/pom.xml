@@ -109,7 +109,7 @@
 				<version>3.4.0</version>
 				<configuration>
 					<to>
-						<image>4599112/${project.artifactId}:latest</image>
+						<image>4599112/microservice101:${project.artifactId}</image>
 					</to>
 				</configuration>
 			</plugin>

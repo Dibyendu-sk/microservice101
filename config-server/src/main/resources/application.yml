@@ -1,46 +1,5 @@
 spring:
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: dkar
-    password: admin@123
   application:
     name: "configserver"
   profiles:
-    active: git
-  #    active: native
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Dibyendu-sk/configs.git
-          username: Dibyendu-sk
-          password: 123@Dibyendu
-          default-label: main
-          timeout: 5
-          clone-on-start: true
-          force-pull: true
-       #native:
-            # to read configration from "configs" folder
-          #search-locations: "classpath:/configs"
-
-            #To read configuration from system file path
-         #search-locations: "file:///D://codebase/configs"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  health:
-    readinessstate:
-      enabled: true
-    livenessstate:
-      enabled: true
-  endpoint:
-    health:
-      probes:
-        enabled: true
-server:
-  port: 8071
-encrypt:
-  key: "AS321GF78IKAJML5UA7DS431KLOIU66V1"
+    active: server

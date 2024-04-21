@@ -2,7 +2,7 @@ server:
   port: 2023
 spring:
   profiles:
-    active: local
+    active: ${SPRING_PROFILE_ACTIVE:local}
   application:
     name: "accounts"
   config:
